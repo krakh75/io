@@ -115,15 +115,5 @@ virt-install --connect qemu:///system --virt-type kvm --name ionet --ram 3072  -
 echo "Checking if virtual machine is running..."
 virsh list
 
-# Wait for the VM to start (adjust the sleep duration as needed)
-sleep 60
-
-# Send username and password to the VM using virt-viewer
-sshpass -p user virt-viewer -c qemu+ssh://user@ionet/system
-
-#IO.NET Setup files
-curl -L https://github.com/ionet-official/io-net-official-setup-script/raw/main/ionet-setup.sh -o ionet-setup.sh && \
-chmod +x ionet-setup.sh && \
-./ionet-setup.sh && \
-curl -L https://github.com/ionet-official/io_launch_binaries/raw/main/launch_binary_linux -o launch_binary_linux && \
-chmod +x launch_binary_linux
+# Open console for the new virtual machine
+virsh console ionet
