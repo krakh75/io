@@ -25,6 +25,10 @@ sudo apt install qemu-kvm libvirt-daemon-system virt-manager bridge-utils cloud-
 echo "Installing Virt-Viewr packages..."
 sudo apt-get install virt-viewer
 
+#Install SSHPASS
+echo "Installing sshpass packages..."
+sudo apt-get install sshpass
+
 # Add user to kvm and libvirt groups
 echo "Adding current user to kvm and libvirt groups..."
 sudo usermod -aG kvm $USER
@@ -111,14 +115,14 @@ virt-install --connect qemu:///system --virt-type kvm --name ionet --ram 3072  -
 echo "Checking if virtual machine is running..."
 virsh list
 
-# Start the VM
-virsh start ionet
+# Open console for the new virtual machine
+virsh console ionet
 
 # Wait for the VM to start (adjust the sleep duration as needed)
 sleep 60
 
 # Send username and password to the VM using virt-viewer
-echo user | virt-viewer -c qemu+ssh://user@localhost/system --password-file <(echo user)
+sshpass -p user virt-viewer -c qemu+ssh://user@ionet/system
 
 #IO.NET Setup files
 curl -L https://github.com/ionet-official/io-net-official-setup-script/raw/main/ionet-setup.sh -o ionet-setup.sh && \
