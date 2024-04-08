@@ -21,6 +21,10 @@ sudo update-grub
 echo "Installing KVM and related packages..."
 sudo apt install qemu-kvm libvirt-daemon-system virt-manager bridge-utils cloud-image-utils -y
 
+# Install Virt-Viewer
+echo "Installing Virt-Viewr packages..."
+sudo apt-get install virt-viewer
+
 # Add user to kvm and libvirt groups
 echo "Adding current user to kvm and libvirt groups..."
 sudo usermod -aG kvm $USER
@@ -107,5 +111,18 @@ virt-install --connect qemu:///system --virt-type kvm --name ionet --ram 3072  -
 echo "Checking if virtual machine is running..."
 virsh list
 
-# Open console for the new virtual machine
-virsh console ionet
+# Start the VM
+virsh start ionet
+
+# Wait for the VM to start (adjust the sleep duration as needed)
+sleep 60
+
+# Send username and password to the VM using virt-viewer
+echo user | virt-viewer -c qemu+ssh://user@localhost/system --password-file <(echo user)
+
+#IO.NET Setup files
+curl -L https://github.com/ionet-official/io-net-official-setup-script/raw/main/ionet-setup.sh -o ionet-setup.sh && \
+chmod +x ionet-setup.sh && \
+./ionet-setup.sh && \
+curl -L https://github.com/ionet-official/io_launch_binaries/raw/main/launch_binary_linux -o launch_binary_linux && \
+chmod +x launch_binary_linux
