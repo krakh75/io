@@ -115,9 +115,6 @@ virt-install --connect qemu:///system --virt-type kvm --name ionet --ram 3072  -
 echo "Checking if virtual machine is running..."
 virsh list
 
-# Open console for the new virtual machine
-virsh console ionet
-
 # Wait for the VM to start (adjust the sleep duration as needed)
 sleep 60
 
