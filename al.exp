@@ -6,7 +6,7 @@ set password "user"
 set host "192.168.122.101"
 
 # Spawn SSH session
-spawn ssh $user@$host
+spawn ssh $user@$host -y
 
 # Expect the password prompt
 expect "password:"
