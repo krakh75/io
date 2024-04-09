@@ -24,3 +24,4 @@ expect "$user@"
 
 # This line keeps the script running until the spawned process exits
 interact
+sudo -i
