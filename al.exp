@@ -6,13 +6,7 @@ set password "user"
 set host "192.168.122.101"
 
 # Spawn SSH session
-spawn ssh $user@$host
-
-# Expect the password prompt
-expect "Are you sure you want to continue connecting (yes/no/[fingerprint])? user"
-
-# Send the password
-send "$yes\r"
+spawn ssh $user@$host -yes
 
 # Expect the password prompt
 expect "password:"
