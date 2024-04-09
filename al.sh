@@ -1,0 +1,26 @@
+#!/usr/bin/expect -f
+
+# Set your SSH credentials
+set user "user"
+set password "user"
+set host "192.168.122.101"
+
+# Spawn SSH session
+spawn ssh $user@$host
+
+# Expect the password prompt
+expect "assword:"
+# Send the password
+send "$password\r"
+
+# This is optional, expect a prompt or specific output that indicates successful login
+expect "$user@"
+
+# Now, you can interact with the SSH session if needed
+# For example, you can send commands like:
+# send "ls -l\r"
+# expect "$user@" 
+# send "exit\r"
+
+# This line keeps the script running until the spawned process exits
+interact
