@@ -6,7 +6,7 @@ set password "user"
 set host "192.168.122.101"
 
 # Spawn SSH session
-spawn ssh $user@$host -y
+spawn ssh $user@$host -yes
 
 # Expect the password prompt
 expect "password:"
@@ -24,4 +24,3 @@ expect "$user@"
 
 # This line keeps the script running until the spawned process exits
 interact
-sudo -i
