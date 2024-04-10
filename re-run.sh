@@ -1,5 +1,5 @@
 #!/bin/bash
-launch_string="Yours Run Docker Command"
+launch_string="IO"
 file_path="/root"
 binary_name=$(basename "${launch_string%% *}")
 echo "STOP AND DELETE ALL CONTAINERS"
