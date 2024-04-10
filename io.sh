@@ -1,14 +1,5 @@
 #!/bin/bash
 
-# Check if server supports hardware virtualization (VT)
-echo "Checking hardware virtualization support..."
-if egrep -q '(vmx|svm)' /proc/cpuinfo; then
-    echo "Hardware virtualization supported."
-else
-    echo "Hardware virtualization not supported. Exiting."
-    exit 1
-fi
-
 # Update packages
 echo "Updating packages..."
 sudo apt update -y && sudo apt upgrade -y
