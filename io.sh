@@ -1,5 +1,4 @@
 #!/bin/bash
-
 # Update packages
 echo "Updating packages..."
 sudo apt update -y && sudo apt upgrade -y
